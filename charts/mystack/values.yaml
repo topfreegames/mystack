@@ -1,0 +1,14 @@
+mystack-controller:
+  postgres_url: mystack-postgres
+  postgres_port: "5432"
+  postgres_user: mystack
+  postgres_dbname: mystack
+  google_clientid: ""
+  google_clientsecret: ""
+  oauth_domains: "example.com other.com"
+mystack-logger:
+  nsqd_url: mystack-nsqd:4150
+  redis_url: redis://:@mystack-redis:6379
+mystack-router:
+  domain: mystack.com
+  replicaCount: 2

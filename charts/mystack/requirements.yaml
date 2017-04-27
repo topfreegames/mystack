@@ -1,0 +1,22 @@
+dependencies:
+  - name: mystack-redis
+    version: 0.1.0
+    repository: http://helm.tfgco.com
+  - name: mystack-postgres
+    version: 0.1.0
+    repository: http://helm.tfgco.com
+  - name: mystack-fluentd
+    version: 0.2.0
+    repository: http://helm.tfgco.com
+  - name: mystack-nsq
+    version: 0.1.0
+    repository: http://helm.tfgco.com
+  - name: mystack-router
+    version: 0.1.0
+    repository: http://helm.tfgco.com
+  - name: mystack-logger
+    version: 0.2.0
+    repository: http://helm.tfgco.com
+  - name: mystack-controller
+    version: 0.1.0
+    repository: http://helm.tfgco.com
