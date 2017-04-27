@@ -3,6 +3,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mystack-router
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "600"
 spec:
   selector:
     app: mystack-router
