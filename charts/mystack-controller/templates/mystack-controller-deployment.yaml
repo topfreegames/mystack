@@ -1,19 +1,12 @@
-# mystack-controller api
-# https://github.com/topfreegames/mystack-controller
-#
-# Licensed under the MIT license:
-# http://www.opensource.org/licenses/mit-license
-# Copyright © 2017 Top Free Games <backend@tfgco.com>
-
 apiVersion: v1
 kind: Service
 metadata:
   name: mystack-controller
+  labels:
+    mystack/routable: "true"
 spec:
   selector:
     app: mystack-controller
-  labels:
-    mystack/routable: "true"
   ports:
     - protocol: TCP
       port: 8080
@@ -52,7 +45,7 @@ spec:
             - name: MYSTACK_POSTGRES_HOST
               value: {{ .Values.postgres_url }}
             - name: MYSTACK_POSTGRES_PORT
-              value: {{ .Values.postgres_port }}
+              value: "{{ .Values.postgres_port }}"
             - name: MYSTACK_POSTGRES_USER
               value: {{ .Values.postgres_user }}
             - name: MYSTACK_POSTGRES_DBNAME

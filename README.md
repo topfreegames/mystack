@@ -8,5 +8,5 @@ You will need [helm](https://github.com/kubernetes/helm)
 ```
 helm repo add tfgco http://helm.tfgco.com
 helm repo update
-helm install tfgco/mystack --namespace mystack
+helm install tfgco/mystack --namespace mystack --name mystack
 ```

@@ -1,5 +1,5 @@
 postgres_url: mystack-postgres
-postgres_port: "5432"
+postgres_port: 5432
 postgres_user: mystack
 postgres_dbname: mystack
 google_clientid: ""
