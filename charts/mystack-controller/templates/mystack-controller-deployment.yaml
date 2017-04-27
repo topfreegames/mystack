@@ -56,3 +56,5 @@ spec:
               value: {{ .Values.google_clientsecret }}
             - name: MYSTACK_OAUTH_ACCEPTEDDOMAINS
               value: {{ .Values.oauth_domains }}
+            - name: MYSTACK_KUBERNETES_SERVICE_DOMAIN_SUFFIX
+              value: {{ .Values.domain }}

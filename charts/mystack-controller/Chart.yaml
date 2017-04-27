@@ -1,7 +1,7 @@
 name: mystack-controller
 home: https://github.com/topfreegames/mystack-controller
 description: The controller module of mystack
-version: 0.1.0
+version: 0.1.1
 maintainers:
   - name: TFGCo
     email: backend@tfgco.com

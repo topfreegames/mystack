@@ -5,3 +5,4 @@ postgres_dbname: mystack
 google_clientid: ""
 google_clientsecret: ""
 oauth_domains: "example.com other.com"
+domain: "mystack.com"

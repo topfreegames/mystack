@@ -9,7 +9,6 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080
   type: LoadBalancer
 ---
 apiVersion: extensions/v1beta1
@@ -27,7 +26,7 @@ spec:
         - name: mystack-router
           image: quay.io/tfgco/mystack-router:v{{ .Chart.Version }}
           ports:
-            - containerPort: 8080
+            - containerPort: 80
           env:
           - name: MYSTACK_KUBERNETES_SERVICE_DOMAIN_SUFFIX
             value: {{ .Values.domain }}
