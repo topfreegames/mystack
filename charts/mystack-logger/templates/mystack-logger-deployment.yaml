@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mystack-logger
+  labels:
+    mystack/routable: "true"
+spec:
+  selector:
+    app: mystack-logger
+  ports:
+    - port: 5000
+      targetPort: 5000
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mystack-logger
+  labels:
+    heritage: mystack
+spec:
+  selector:
+    matchLabels:
+      app: mystack-logger
+      heritage: mystack
+  template:
+    metadata:
+      name: mystack-logger
+      labels:
+        heritage: mystack
+        app: mystack-logger
+    spec:
+      containers:
+      - name: mystack-logger
+        ports:
+          - containerPort: 5000
+        image: quay.io/tfgco/mystack-logger:v{{ .Chart.Version }}
+        env:
+        - name: MYSTACK_LOGGER_NSQD_URL
+          value: {{ .Values.nsqd_url }}
+        - name: MYSTACK_LOGGER_REDIS_URL
+          value: {{ .Values.redis_url }}

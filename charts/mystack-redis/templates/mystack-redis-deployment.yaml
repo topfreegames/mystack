@@ -1,0 +1,32 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: mystack-redis
+  name: mystack-redis
+spec:
+  ports:
+    - port: 6379
+      targetPort: 6379
+  selector:
+    app: mystack-redis
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mystack-redis
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mystack-redis
+    spec:
+      containers:
+      - name: redis
+        image: redis:3.2
+        command:
+          - redis-server 
+        ports:
+          - containerPort: 6379

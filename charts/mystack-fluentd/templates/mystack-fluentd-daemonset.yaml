@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: DaemonSet
+metadata:
+  name: mystack-logger-fluentd
+  labels:
+    heritage: mystack
+spec:
+  selector:
+    matchLabels:
+      app: mystack-logger-fluentd
+      heritage: mystack
+  template:
+    metadata:
+      name: mystack-logger-fluentd
+      labels:
+        heritage: mystack
+        app: mystack-logger-fluentd
+    spec:
+      containers:
+      - name: mystack-logger-fluentd
+        image: quay.io/tfgco/mystack-fluentd:v{{ .Chart.Version }}
+        volumeMounts:
+        - name: varlog
+          mountPath: /var/log
+        - name: varlibdockercontainers
+          mountPath: /var/lib/docker/containers
+          readOnly: true
+        env:
+        - name: DEBUG
+          value: "false"
+      volumes:
+      - name: varlog
+        hostPath:
+          path: /var/log
+      - name: varlibdockercontainers
+        hostPath:
+          path: /var/lib/docker/containers

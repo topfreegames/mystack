@@ -1,0 +1,7 @@
+name: mystack-redis
+home: https://github.com/topfreegames/mystack-logger
+description: Redis for mystack-logger
+version: 0.1.0
+maintainers:
+  - name: TFGCo
+    email: backend@tfgco.com

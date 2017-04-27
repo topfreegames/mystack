@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: mystack-nsqd 
+  name: mystack-nsqd 
+spec:
+  ports:
+    - port: 4150
+      name: transport 
+      targetPort: 4150
+    - port: 4151
+      name: http
+      targetPort: 4151
+  selector:
+    app: mystack-nsqd
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: mystack-nsqd 
+  name: mystack-nsqd 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mystack-nsqd
+    spec:
+      containers:
+        - name: nsqd 
+          image: nsqio/nsq 
+          command: 
+            - /nsqd
+          ports:
+            - containerPort: 4150
+              name: tcp
+              protocol: TCP
+            - containerPort: 4151
+              name: http
+              protocol: TCP

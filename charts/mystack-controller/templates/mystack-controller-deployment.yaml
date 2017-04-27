@@ -1,0 +1,65 @@
+# mystack-controller api
+# https://github.com/topfreegames/mystack-controller
+#
+# Licensed under the MIT license:
+# http://www.opensource.org/licenses/mit-license
+# Copyright © 2017 Top Free Games <backend@tfgco.com>
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mystack-controller
+spec:
+  selector:
+    app: mystack-controller
+  labels:
+    mystack/routable: "true"
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mystack-controller
+  labels:
+    heritage: mystack
+spec:
+  selector:
+    matchLabels:
+      app: mystack-controller
+      heritage: mystack
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mystack-controller
+        heritage: mystack
+    spec:
+      containers:
+        - name: controller
+          command:
+            - /app/mystack-controller
+            - start
+            - -v3
+          image: quay.io/tfgco/mystack-controller:v{{ .Chart.Version }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MYSTACK_POSTGRES_HOST
+              value: {{ .Values.postgres_url }}
+            - name: MYSTACK_POSTGRES_PORT
+              value: {{ .Values.postgres_port }}
+            - name: MYSTACK_POSTGRES_USER
+              value: {{ .Values.postgres_user }}
+            - name: MYSTACK_POSTGRES_DBNAME
+              value: {{ .Values.postgres_dbname }}
+            - name: MYSTACK_GOOGLE_CLIENT_ID
+              value: {{ .Values.google_clientid }}
+            - name: MYSTACK_GOOGLE_CLIENT_SECRET
+              value: {{ .Values.google_clientsecret }}
+            - name: MYSTACK_OAUTH_ACCEPTEDDOMAINS
+              value: {{ .Values.oauth_domains }}

@@ -1,0 +1,7 @@
+name: mystack-logger
+home: https://github.com/topfreegames/mystack-logger
+description: The logger component of mystack
+version: 0.2.0
+maintainers:
+  - name: TFGCo
+    email: backend@tfgco.com

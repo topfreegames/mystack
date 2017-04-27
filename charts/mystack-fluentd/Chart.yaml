@@ -1,0 +1,7 @@
+name: mystack-fluentd
+home: https://github.com/topfreegames/mystack-logger
+description: Fluentd for collecting logs of mystack deployed apps
+version: 0.1.0
+maintainers:
+  - name: TFGCo
+    email: backend@tfgco.com

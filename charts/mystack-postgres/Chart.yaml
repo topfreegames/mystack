@@ -1,0 +1,7 @@
+name: mystack-postgres
+home: https://github.com/topfreegames/mystack-controller
+description: Postgres for keeping mystack cluster state
+version: 0.1.0
+maintainers:
+  - name: TFGCo
+    email: backend@tfgco.com

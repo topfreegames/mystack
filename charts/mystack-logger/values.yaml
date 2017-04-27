@@ -1,0 +1,2 @@
+nsqd_url: mystack-nsqd:4150
+redis_url: redis://:@mystack-redis:6379
