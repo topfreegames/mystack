@@ -39,3 +39,5 @@ spec:
           value: {{ .Values.nsqd_url }}
         - name: MYSTACK_LOGGER_REDIS_URL
           value: {{ .Values.redis_url }}
+        - name: MYSTACK_LOGGER_OAUTH_ACCEPTEDDOMAINS
+          value: {{ .Values.oauth_domains }}
