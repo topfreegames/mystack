@@ -34,20 +34,22 @@ spec:
       containers:
         - name: controller
           command:
-            - /app/mystack-controller
-            - start
-            - -v3
+            - "/bin/bash"
+            - "-c"
+            - "/app/mystack-controller migrate && /app/mystack-controller start -v3"
           image: quay.io/tfgco/mystack-controller:v{{ .Chart.Version }}
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
           env:
             - name: MYSTACK_POSTGRES_HOST
-              value: {{ .Values.postgres_url }}
+              value: {{ .Values.postgres_host }}
             - name: MYSTACK_POSTGRES_PORT
               value: "{{ .Values.postgres_port }}"
             - name: MYSTACK_POSTGRES_USER
               value: {{ .Values.postgres_user }}
+            - name: MYSTACK_POSTGRES_PASSWORD
+              value: {{ .Values.postgres_password }}
             - name: MYSTACK_POSTGRES_DBNAME
               value: {{ .Values.postgres_dbname }}
             - name: MYSTACK_GOOGLE_CLIENT_ID

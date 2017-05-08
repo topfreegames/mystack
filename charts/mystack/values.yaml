@@ -1,8 +1,11 @@
+global:
+  database_location: "on-cluster"
 mystack-controller:
-  postgres_url: mystack-postgres
+  postgres_host: mystack-postgres
   postgres_port: "5432"
   postgres_user: mystack
   postgres_dbname: mystack
+# postgres_password: ""
   google_clientid: ""
   google_clientsecret: ""
   oauth_domains: "example.com other.com"

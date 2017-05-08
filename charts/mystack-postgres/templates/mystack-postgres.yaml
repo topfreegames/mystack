@@ -1,3 +1,4 @@
+{{- if eq .Values.global.database_location "on-cluster" }}
 ---
 apiVersion: v1
 kind: Service
@@ -52,3 +53,4 @@ spec:
           initialDelaySeconds: 5
           timeoutSeconds: 3
           periodSeconds: 5
+{{- end}}
