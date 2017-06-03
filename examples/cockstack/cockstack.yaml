@@ -1,0 +1,17 @@
+services:
+  cockroackdb:
+    image: cockroachdb/cockroach:v1.0.1
+    command:
+      - /cockroach/cockroach
+      - start
+      - --insecure
+    ports:
+      - 26257:26257
+      - 8181:8080
+    readinessProbe:
+      command:
+        - sh
+        - -c
+        - exec /cockroach/cockroach sql --insecure -e 'select 1;'
+      periodSeconds: 5
+      startDeploymentTimeoutSeconds: 120
