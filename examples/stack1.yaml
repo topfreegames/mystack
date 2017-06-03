@@ -1,0 +1,10 @@
+services:
+  cockroackdb:
+    image: cockroachdb/cockroach:v1.0.1
+    command:
+      - /cockroach/cockroach
+      - start
+      - --insecure
+    ports:
+      - 26257:26257
+      - 8181:8080
