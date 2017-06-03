@@ -1,3 +1,13 @@
+setup:
+  image: cockroachdb/cockroach:v1.0.1
+  command:
+    - sh
+    - -c
+    - exec /cockroach/cockroach user set roach --insecure && /cockroach/cockroach sql --insecure -e 'CREATE DATABASE roach' && /cockroach/cockroach sql --insecure -e 'GRANT ALL ON DATABASE roach TO roach'
+  startDeploymentTimeoutSeconds: 120
+  env:
+    - name: COCKROACH_HOST
+      value: cockroachdb
 services:
   cockroackdb:
     image: cockroachdb/cockroach:v1.0.1
