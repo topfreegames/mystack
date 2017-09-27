@@ -66,3 +66,7 @@ spec:
               value: {{ .Values.oauth_domains }}
             - name: MYSTACK_KUBERNETES_SERVICE_DOMAIN_SUFFIX
               value: {{ .Values.domain }}
+            - name: MYSTACK_KUBERNETES_DEPLOYMENTS_DEFAULT_RESOURCES_LIMITS_CPU
+              value: 50m
+            - name: MYSTACK_KUBERNETES_DEPLOYMENTS_DEFAULT_RESOURCES_REQUESTS_CPU
+              value: 10m
