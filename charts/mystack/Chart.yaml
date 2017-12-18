@@ -1,7 +1,7 @@
 name: mystack
 home: https://github.com/topfreegames/mystack
 description: Mystack
-version: 0.7.3
+version: 0.7.5
 maintainers:
   - name: TFGCo
     email: backend@tfgco.com
